@@ -90,12 +90,12 @@ export const AiRecommendationsView: React.FC<AiRecommendationsViewProps> = ({ re
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between">
+                <div className="pt-3 border-t border-slate-800/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
                   <span className="text-xs font-mono text-emerald-400 flex items-center gap-1.5">
-                    <CheckCircle2 className="w-3.5 h-3.5" />
-                    Optimal for grid stability & reserve preservation
+                    <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
+                    <span>Optimal for grid stability & reserve preservation</span>
                   </span>
-                  <div className="flex items-center gap-1 text-xs text-cyan-400 font-semibold cursor-pointer hover:underline">
+                  <div className="flex items-center gap-1 text-xs text-cyan-400 font-semibold cursor-pointer hover:underline self-end sm:self-auto">
                     <span>Acknowledge Protocol</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </div>

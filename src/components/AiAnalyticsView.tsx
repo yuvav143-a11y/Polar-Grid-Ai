@@ -50,7 +50,7 @@ export const AiAnalyticsView: React.FC<AiAnalyticsViewProps> = ({ recentReadings
       </div>
 
       {/* Primary Chart: Generation vs Demand */}
-      <div className="p-5 rounded-2xl bg-[#0a101d] border border-slate-800">
+      <div className="p-4 sm:p-5 rounded-2xl bg-[#0a101d] border border-slate-800">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 pb-3 border-b border-slate-800">
           <div>
             <h3 className="text-base font-bold font-['Rajdhani'] text-white">
@@ -60,15 +60,15 @@ export const AiAnalyticsView: React.FC<AiAnalyticsViewProps> = ({ recentReadings
               Live power flow trend over the last 15 updates (MW)
             </p>
           </div>
-          <div className="flex items-center gap-4 text-xs font-mono">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs font-mono">
             <span className="flex items-center gap-1.5 text-cyan-400">
-              <span className="w-2.5 h-2.5 rounded-full bg-cyan-400" /> Generation
+              <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 shrink-0" /> Generation
             </span>
             <span className="flex items-center gap-1.5 text-amber-400">
-              <span className="w-2.5 h-2.5 rounded-full bg-amber-400" /> Consumption
+              <span className="w-2.5 h-2.5 rounded-full bg-amber-400 shrink-0" /> Demand
             </span>
             <span className="flex items-center gap-1.5 text-emerald-400">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" /> Clean Mix
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 shrink-0" /> Clean Mix
             </span>
           </div>
         </div>

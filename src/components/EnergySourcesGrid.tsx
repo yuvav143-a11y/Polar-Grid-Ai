@@ -158,16 +158,16 @@ export const EnergySourcesGrid: React.FC<EnergySourcesGridProps> = ({ sources })
 
             return (
               <div key={`avail-${src.id}`} className="space-y-1">
-                <div className="flex items-center justify-between text-xs font-mono">
-                  <div className="flex items-center gap-2">
-                    <span className="font-bold text-white min-w-[130px] sm:min-w-[150px]">{src.name}</span>
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs font-mono">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="font-bold text-white text-xs sm:text-sm">{src.name}</span>
                     <span className={`text-[10px] px-1.5 py-0.2 rounded border font-semibold ${getStatusBadge(src.status)}`}>
                       {src.status}
                     </span>
                   </div>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center justify-between sm:justify-end gap-3">
                     <span className="text-slate-400 font-mono text-[11px]">{powerText}</span>
-                    <span className="font-bold text-cyan-400 text-sm font-mono w-12 text-right">{src.availabilityPct}%</span>
+                    <span className="font-bold text-cyan-400 text-xs sm:text-sm font-mono text-right">{src.availabilityPct}%</span>
                   </div>
                 </div>
 

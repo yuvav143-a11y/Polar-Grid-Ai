@@ -51,23 +51,23 @@ export const StationSelector: React.FC<StationSelectorProps> = ({ onSelected, cu
   };
 
   return (
-    <div id="station-selection-view" className="fixed inset-0 z-40 flex items-center justify-center bg-[#070b14]/95 backdrop-blur-md p-4 overflow-y-auto">
+    <div id="station-selection-view" className="fixed inset-0 z-40 flex items-center justify-center bg-[#070b14]/95 backdrop-blur-md p-3 sm:p-4 overflow-y-auto">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="w-full max-w-4xl bg-[#0c1322] border border-cyan-500/30 rounded-2xl p-6 md:p-8 shadow-[0_16px_50px_rgba(0,0,0,0.8)]"
+        className="w-full max-w-4xl bg-[#0c1322] border border-cyan-500/30 rounded-2xl p-4 sm:p-6 md:p-8 my-auto shadow-[0_16px_50px_rgba(0,0,0,0.8)]"
       >
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-6 border-b border-slate-800">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 sm:mb-8 pb-4 sm:pb-6 border-b border-slate-800">
           <div>
             <div className="flex items-center gap-2 text-cyan-400 text-xs font-mono tracking-widest uppercase mb-1">
               <Compass className="w-4 h-4" />
               <span>POLAR DEPLOYMENT SECTOR</span>
             </div>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-white font-['Rajdhani'] tracking-wide">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white font-['Rajdhani'] tracking-wide">
               Select Your Research Station
             </h2>
-            <p className="text-slate-400 text-sm mt-1">
+            <p className="text-slate-400 text-xs sm:text-sm mt-1">
               Assign your operator profile to a telemetry sector for real-time grid monitoring and AI control.
             </p>
           </div>
@@ -76,7 +76,7 @@ export const StationSelector: React.FC<StationSelectorProps> = ({ onSelected, cu
             id="station-confirm-button"
             onClick={handleConfirm}
             disabled={saving || loading}
-            className="self-start md:self-auto py-2.5 px-6 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold rounded-xl shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all flex items-center gap-2 cursor-pointer disabled:opacity-50"
+            className="w-full md:w-auto py-2.5 px-6 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold rounded-xl shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
           >
             {saving ? 'Assigning...' : 'Confirm Assignment'}
             <ArrowRight className="w-4 h-4" />

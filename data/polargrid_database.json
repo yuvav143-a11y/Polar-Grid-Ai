@@ -39,6 +39,26 @@
       "account_status": "ACTIVE",
       "createdAt": "2026-09-24T03:36:08.639Z",
       "updatedAt": "2026-09-24T03:36:08.639Z"
+    },
+    {
+      "id": 5,
+      "username": "DeviceTest1",
+      "passwordHash": "$2b$10$JVxWaisK0Jm39JSiuoX1yeYpKOALXxTmCbsBmfO7lcM2LQugVxQ9a",
+      "selectedStationId": "station-alpha",
+      "role": "GRID_OPERATOR",
+      "account_status": "ACTIVE",
+      "createdAt": "2026-09-29T08:30:29.891Z",
+      "updatedAt": "2026-09-29T08:30:29.891Z"
+    },
+    {
+      "id": 6,
+      "username": "PolarCommander",
+      "passwordHash": "$2b$10$KtKiKWVEqMW18RdMZnrArub/50zmrFvYo1IdWAOpw/ZJX.JpQxOua",
+      "selectedStationId": "station-alpha",
+      "role": "GRID_OPERATOR",
+      "account_status": "ACTIVE",
+      "createdAt": "2026-09-29T08:37:10.606Z",
+      "updatedAt": "2026-09-29T08:37:10.606Z"
     }
   ],
   "researchStations": [
@@ -323,7 +343,7 @@
       "voltageVarianceTolerancePct": 4.5,
       "theme": "dark",
       "autoAcknowledgeMinorAlerts": false,
-      "updatedAt": "2026-09-23T15:16:28.657Z"
+      "updatedAt": "2026-09-29T08:30:29.891Z"
     },
     "6": {
       "userId": 6,
@@ -332,7 +352,7 @@
       "voltageVarianceTolerancePct": 4.5,
       "theme": "dark",
       "autoAcknowledgeMinorAlerts": false,
-      "updatedAt": "2026-09-23T15:16:59.053Z"
+      "updatedAt": "2026-09-29T08:37:10.606Z"
     },
     "7": {
       "userId": 7,

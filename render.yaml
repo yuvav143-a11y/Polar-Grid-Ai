@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: polar-grid-ai-backend
+    env: node
+    plan: free
+    buildCommand: npm install --legacy-peer-deps && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+    disk:
+      name: polargrid-data
+      mountPath: /app/data
+      sizeGB: 1

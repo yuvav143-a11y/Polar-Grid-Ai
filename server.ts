@@ -2,6 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import http from 'http';
 import path from 'path';
+import cors from 'cors';
 import { WebSocketServer } from 'ws';
 import bcrypt from 'bcryptjs';
 import { db } from './server/db.js';
@@ -9,12 +10,31 @@ import { generateToken, requireAuth, AuthRequest } from './server/auth.js';
 import { energyEngine } from './server/energyEngine.js';
 import { createServer as createViteServer } from 'vite';
 
-const PORT = 3000;
+const PORT = Number(process.env.PORT) || 3000;
 const app = express();
 const server = http.createServer(app);
 
+// CORS configuration to allow cross-origin requests from GitHub Pages or any client device
+app.use(cors({
+  origin: true,
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
+}));
+app.options('*', cors());
+
 // JSON body parser
 app.use(express.json());
+
+// Public health check endpoint
+app.get('/api/health', (req, res) => {
+  return res.json({
+    status: 'ok',
+    service: 'POLAR-GRID AI Backend',
+    version: '1.0.0',
+    timestamp: new Date().toISOString()
+  });
+});
 
 // Set up WebSocket server on path /ws/grid
 const wss = new WebSocketServer({ noServer: true });
@@ -403,7 +423,18 @@ app.get('/api/settings', requireAuth, (req: AuthRequest, res) => {
 
 // PUT /api/settings
 app.put('/api/settings', requireAuth, (req: AuthRequest, res) => {
-  const { username, alertNotificationsEnabled, highLoadThresholdPct, voltageVarianceTolerancePct, theme, autoAcknowledgeMinorAlerts } = req.body;
+  const { username, oldPassword, newPassword, alertNotificationsEnabled, highLoadThresholdPct, voltageVarianceTolerancePct, theme, autoAcknowledgeMinorAlerts } = req.body;
+
+  if (oldPassword && newPassword) {
+    const isValid = bcrypt.compareSync(oldPassword, req.user!.passwordHash);
+    if (!isValid) {
+      return res.status(400).json({ error: 'Incorrect existing password.' });
+    }
+    if (newPassword.length < 6) {
+      return res.status(400).json({ error: 'New password must be at least 6 characters long.' });
+    }
+    db.updateUserPasswordByUsername(req.user!.username, newPassword);
+  }
 
   if (username && username.trim() !== req.user!.username) {
     const existing = db.findUserByUsername(username);

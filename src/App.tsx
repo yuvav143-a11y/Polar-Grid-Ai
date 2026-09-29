@@ -242,7 +242,7 @@ export default function App() {
   const topRec = recommendations.length > 0 ? recommendations[0].recommendation : undefined;
 
   return (
-    <div id="polar-grid-app-root" className="min-h-screen bg-[#070b14] text-slate-100 flex flex-col font-['Plus_Jakarta_Sans']">
+    <div id="polar-grid-app-root" className="min-h-screen bg-[#070b14] text-slate-100 flex flex-col font-['Plus_Jakarta_Sans'] overflow-x-hidden w-full">
       {/* Header with real-time controls */}
       <Header
         user={user}
@@ -257,7 +257,7 @@ export default function App() {
       />
 
       {/* Main Workspace Stage */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 space-y-4 sm:space-y-6 overflow-x-hidden">
         {/* TAB 1: DASHBOARD (Overview + Energy Flow + Sources + Mix) */}
         {activeTab === 'dashboard' && (
           <div className="space-y-6">

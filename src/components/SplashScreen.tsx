@@ -76,25 +76,25 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
           </svg>
 
           {/* Center Brand Cluster */}
-          <div className="relative z-10 flex flex-col items-center text-center px-6">
+          <div className="relative z-10 flex flex-col items-center text-center px-4 sm:px-6 max-w-md w-full">
             {/* Glowing Icon Frame */}
             <motion.div
               id="splash-logo-symbol"
               initial={{ scale: 0.7, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-28 h-28 mb-8 flex items-center justify-center"
+              className="relative w-20 h-20 sm:w-28 sm:h-28 mb-5 sm:mb-8 flex items-center justify-center shrink-0"
             >
               {/* Electric Pulse Halo */}
               <div className="absolute inset-0 rounded-3xl bg-cyan-500/20 blur-2xl animate-pulse" />
               <div className="absolute inset-0 rounded-2xl border border-cyan-400/40 bg-gradient-to-b from-cyan-950/80 to-[#0b162c] shadow-[0_0_40px_rgba(6,182,212,0.35)] flex items-center justify-center backdrop-blur-md">
                 {/* Geometric Grid Emblem */}
                 <div className="relative flex items-center justify-center">
-                  <Zap className="w-14 h-14 text-cyan-400 drop-shadow-[0_0_16px_rgba(6,182,212,0.8)]" />
+                  <Zap className="w-10 h-10 sm:w-14 sm:h-14 text-cyan-400 drop-shadow-[0_0_16px_rgba(6,182,212,0.8)]" />
                   <motion.div
                     animate={{ rotate: 360 }}
                     transition={{ repeat: Infinity, duration: 12, ease: 'linear' }}
-                    className="absolute -inset-3 rounded-full border border-dashed border-cyan-400/30 pointer-events-none"
+                    className="absolute -inset-2.5 sm:-inset-3 rounded-full border border-dashed border-cyan-400/30 pointer-events-none"
                   />
                 </div>
               </div>
@@ -106,7 +106,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-4xl md:text-5xl font-extrabold tracking-wider text-white font-['Rajdhani'] flex items-center gap-3 drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]"
+              className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-wider text-white font-['Rajdhani'] flex items-center justify-center gap-2 sm:gap-3 drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]"
             >
               POLAR-GRID <span className="text-cyan-400">AI</span>
             </motion.h1>
@@ -114,9 +114,9 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
             {/* Animated Electricity Divider */}
             <motion.div
               initial={{ width: 0 }}
-              animate={{ width: step >= 1 ? '160px' : 0 }}
+              animate={{ width: step >= 1 ? '140px' : 0 }}
               transition={{ duration: 0.8, ease: 'easeInOut' }}
-              className="h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent my-4 shadow-[0_0_12px_#22d3ee]"
+              className="h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent my-3 sm:my-4 shadow-[0_0_12px_#22d3ee]"
             />
 
             {/* Tagline */}
@@ -125,7 +125,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: step >= 2 ? 1 : 0, y: step >= 2 ? 0 : 10 }}
               transition={{ duration: 0.6 }}
-              className="text-cyan-200/90 text-sm md:text-base font-medium tracking-widest uppercase font-['Plus_Jakarta_Sans']"
+              className="text-cyan-200/90 text-xs sm:text-sm md:text-base font-medium tracking-widest uppercase font-['Plus_Jakarta_Sans'] leading-relaxed max-w-xs sm:max-w-none"
             >
               Intelligent Grid Energy Management & AI Analytics
             </motion.p>
@@ -135,9 +135,9 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
-              className="mt-10 flex items-center gap-2 text-xs font-mono text-cyan-400/70"
+              className="mt-6 sm:mt-10 flex items-center gap-2 text-[11px] sm:text-xs font-mono text-cyan-400/70"
             >
-              <Activity className="w-4 h-4 animate-spin" />
+              <Activity className="w-3.5 h-3.5 sm:w-4 sm:h-4 animate-spin" />
               <span>INITIALIZING SECURE GRID CORE...</span>
             </motion.div>
           </div>

@@ -93,27 +93,27 @@ export const SystemMetricsBanner: React.FC<SystemMetricsBannerProps> = ({ metric
   ];
 
   return (
-    <div id="system-metrics-banner" className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2.5">
+    <div id="system-metrics-banner" className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2 sm:gap-2.5">
       {cards.map((card) => {
         const Icon = card.icon;
         return (
           <div
             key={card.id}
             id={card.id}
-            className={`p-3 rounded-xl border ${card.border} ${card.bg} backdrop-blur-sm bg-[#0a101d] transition-all hover:border-cyan-400/50 flex flex-col justify-between`}
+            className={`p-2.5 sm:p-3 rounded-xl border ${card.border} ${card.bg} backdrop-blur-sm bg-[#0a101d] transition-all hover:border-cyan-400/50 flex flex-col justify-between`}
           >
-            <div className="flex items-center justify-between mb-1.5">
-              <span className="text-[10px] uppercase font-mono tracking-wider text-slate-400 truncate">
+            <div className="flex items-center justify-between mb-1 sm:mb-1.5 gap-1">
+              <span className="text-[9px] sm:text-[10px] uppercase font-mono tracking-wider text-slate-400 truncate">
                 {card.label}
               </span>
               <Icon className={`w-3.5 h-3.5 ${card.color} shrink-0`} />
             </div>
 
             <div>
-              <div className={`text-lg sm:text-xl font-bold font-['Rajdhani'] ${card.color} tracking-tight`}>
+              <div className={`text-base sm:text-xl font-bold font-['Rajdhani'] ${card.color} tracking-tight`}>
                 {card.value}
               </div>
-              <div className="text-[9px] text-slate-400 font-mono truncate mt-0.5">
+              <div className="text-[8.5px] sm:text-[9px] text-slate-400 font-mono truncate mt-0.5">
                 {card.sub}
               </div>
             </div>

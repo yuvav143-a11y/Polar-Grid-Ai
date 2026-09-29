@@ -37,7 +37,11 @@ export const SettingsView: React.FC<SettingsViewProps> = ({ user, onUserUpdated 
         theme
       });
 
-      onUserUpdated(res.user);
+      onUserUpdated({
+        ...user,
+        username: res.username || username.trim(),
+        settings: res.settings
+      });
       setFeedback({ type: 'success', message: 'Profile and preferences updated successfully in database.' });
     } catch (err: any) {
       setFeedback({ type: 'error', message: err.message || 'Failed to update preferences.' });
@@ -275,6 +279,105 @@ export const SettingsView: React.FC<SettingsViewProps> = ({ user, onUserUpdated 
           Update Password
         </button>
       </form>
+
+      {/* Backend Server & Cross-Device Synchronization */}
+      <div className="p-6 rounded-2xl bg-[#0a101d] border border-cyan-500/30 space-y-4">
+        <div>
+          <h3 className="text-base font-bold font-['Rajdhani'] text-white uppercase tracking-wider mb-1 flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            Backend Server & Cross-Device Synchronization
+          </h3>
+          <p className="text-xs text-slate-400">
+            Configure the persistent backend API URL used for cross-device authentication and centralized database storage.
+          </p>
+        </div>
+
+        <BackendEndpointManager />
+      </div>
+    </div>
+  );
+};
+
+const BackendEndpointManager: React.FC = () => {
+  const [customUrl, setCustomUrl] = useState<string>(() => {
+    try {
+      return localStorage.getItem('polar_grid_backend_url') || '';
+    } catch {
+      return '';
+    }
+  });
+  const [testing, setTesting] = useState(false);
+  const [testResult, setTestResult] = useState<{ ok: boolean; message: string } | null>(null);
+
+  const handleSaveAndTest = async () => {
+    setTesting(true);
+    setTestResult(null);
+    try {
+      if (customUrl.trim()) {
+        localStorage.setItem('polar_grid_backend_url', customUrl.trim().replace(/\/+$/, ''));
+      } else {
+        localStorage.removeItem('polar_grid_backend_url');
+      }
+
+      const res = await api.checkBackendHealth();
+      setTestResult({
+        ok: true,
+        message: `Connected successfully: ${res.service || 'POLAR-GRID AI Backend'} (${res.status || 'OK'})`
+      });
+    } catch (err: any) {
+      setTestResult({
+        ok: false,
+        message: err.message || 'Unable to connect to backend server.'
+      });
+    } finally {
+      setTesting(false);
+    }
+  };
+
+  return (
+    <div className="space-y-3">
+      <div>
+        <label className="block text-xs font-medium text-slate-300 mb-1">
+          Backend API URL (for GitHub Pages / External Hosting):
+        </label>
+        <div className="flex flex-col sm:flex-row gap-2">
+          <input
+            type="url"
+            value={customUrl}
+            onChange={(e) => setCustomUrl(e.target.value)}
+            placeholder="Leave blank for same-origin, or enter https://your-backend.onrender.com"
+            className="flex-1 bg-[#070b14] border border-slate-700 focus:border-cyan-400 rounded-lg px-3 py-2 text-xs text-white font-mono outline-none"
+          />
+          <button
+            type="button"
+            onClick={handleSaveAndTest}
+            disabled={testing}
+            className="px-4 py-2 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg text-xs font-bold font-['Rajdhani'] tracking-wider transition-colors cursor-pointer disabled:opacity-50"
+          >
+            {testing ? 'Testing...' : 'Save & Test Connection'}
+          </button>
+        </div>
+        <p className="text-[11px] text-slate-500 mt-1">
+          When hosting on GitHub Pages, enter the live URL of your deployed Polar Grid AI Node/Express backend.
+        </p>
+      </div>
+
+      {testResult && (
+        <div
+          className={`p-3 rounded-xl border text-xs flex items-center gap-2 ${
+            testResult.ok
+              ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300'
+              : 'bg-rose-500/10 border-rose-500/30 text-rose-300'
+          }`}
+        >
+          {testResult.ok ? (
+            <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+          ) : (
+            <AlertCircle className="w-4 h-4 text-rose-400 shrink-0" />
+          )}
+          <span>{testResult.message}</span>
+        </div>
+      )}
     </div>
   );
 };

@@ -230,8 +230,156 @@ export const EnergyFlowVisualizer: React.FC<EnergyFlowVisualizerProps> = ({
         </div>
       </div>
 
-      {/* Main Flow Stage Canvas & Interactive Nodes */}
-      <div className="relative w-full h-[480px] sm:h-[520px] rounded-xl bg-[#070b14]/90 border border-slate-800/80 overflow-hidden">
+      {/* MOBILE FLOW PRESENTATION (< md) */}
+      <div className="block md:hidden space-y-3">
+        {/* 1. Generation Sources Grid (2x2) */}
+        <div className="p-3.5 rounded-xl bg-[#070b14]/90 border border-slate-800">
+          <div className="flex items-center justify-between text-[11px] font-mono text-slate-400 mb-2.5">
+            <span className="uppercase tracking-wider font-bold text-slate-300">Generation Vectors</span>
+            <span className="text-cyan-400 font-bold">{metrics.totalGenerationMw} MW Active</span>
+          </div>
+          <div className="grid grid-cols-2 gap-2">
+            {/* Solar */}
+            <div className="p-2.5 rounded-lg bg-[#0b1424] border border-amber-500/40">
+              <div className="flex items-center justify-between text-[11px]">
+                <span className="flex items-center gap-1 font-bold text-amber-300">
+                  <Sun className="w-3.5 h-3.5 text-amber-400" /> SOLAR
+                </span>
+                <span className="text-[10px] font-mono text-amber-400">{solar.availabilityPct}%</span>
+              </div>
+              <div className="mt-1 font-mono">
+                <span className="text-sm font-bold text-white">{solar.outputMw}</span>
+                <span className="text-[10px] text-slate-400 ml-1">/{solar.capacityMw} MW</span>
+              </div>
+            </div>
+
+            {/* Wind */}
+            <div className="p-2.5 rounded-lg bg-[#0b1424] border border-sky-500/40">
+              <div className="flex items-center justify-between text-[11px]">
+                <span className="flex items-center gap-1 font-bold text-sky-300">
+                  <Wind className="w-3.5 h-3.5 text-sky-400" /> WIND
+                </span>
+                <span className="text-[10px] font-mono text-sky-400">{wind.availabilityPct}%</span>
+              </div>
+              <div className="mt-1 font-mono">
+                <span className="text-sm font-bold text-white">{wind.outputMw}</span>
+                <span className="text-[10px] text-slate-400 ml-1">/{wind.capacityMw} MW</span>
+              </div>
+            </div>
+
+            {/* Hydro */}
+            <div className="p-2.5 rounded-lg bg-[#0b1424] border border-cyan-500/40">
+              <div className="flex items-center justify-between text-[11px]">
+                <span className="flex items-center gap-1 font-bold text-cyan-300">
+                  <Droplets className="w-3.5 h-3.5 text-cyan-400" /> HYDRO
+                </span>
+                <span className="text-[10px] font-mono text-cyan-400">{hydro.availabilityPct}%</span>
+              </div>
+              <div className="mt-1 font-mono">
+                <span className="text-sm font-bold text-white">{hydro.outputMw}</span>
+                <span className="text-[10px] text-slate-400 ml-1">/{hydro.capacityMw} MW</span>
+              </div>
+            </div>
+
+            {/* Diesel */}
+            <div className="p-2.5 rounded-lg bg-[#0b1424] border border-slate-700/60">
+              <div className="flex items-center justify-between text-[11px]">
+                <span className="flex items-center gap-1 font-bold text-slate-300">
+                  <Fuel className="w-3.5 h-3.5 text-slate-400" /> DIESEL
+                </span>
+                <span className="text-[10px] font-mono text-slate-400">{diesel.availabilityPct}%</span>
+              </div>
+              <div className="mt-1 font-mono">
+                <span className="text-sm font-bold text-white">{diesel.outputMw}</span>
+                <span className="text-[10px] text-slate-400 ml-1">/{diesel.capacityMw} MW</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Downward Pulse Indicator */}
+        <div className="flex items-center justify-center -my-1">
+          <div className="flex items-center gap-1 text-[10px] font-mono text-cyan-400 bg-cyan-950/70 px-2.5 py-0.5 rounded-full border border-cyan-800/50 shadow-sm">
+            <span>↓ POWER INJECTION FLOW ↓</span>
+          </div>
+        </div>
+
+        {/* 2. Polar Core Grid Node */}
+        <div className="p-4 rounded-xl bg-gradient-to-b from-[#0b1a33] to-[#070f1f] border-2 border-cyan-400 shadow-[0_0_25px_rgba(6,182,212,0.3)] text-center">
+          <div className="flex items-center justify-center gap-1.5 text-cyan-400 mb-1">
+            <Zap className="w-4 h-4 animate-pulse" />
+            <span className="font-extrabold font-['Rajdhani'] text-sm tracking-wider text-white">POLAR GRID CORE BUS</span>
+          </div>
+          <div className="text-2xl font-black font-['Rajdhani'] text-cyan-300 drop-shadow-[0_0_8px_rgba(6,182,212,0.6)]">
+            {metrics.totalGenerationMw} <span className="text-xs text-cyan-400 font-mono">MW GENERATED</span>
+          </div>
+          <div className="grid grid-cols-3 gap-2 mt-2 pt-2 border-t border-cyan-900/60 text-[10px] font-mono">
+            <div>
+              <span className="block text-slate-400">Voltage</span>
+              <span className="font-bold text-cyan-300">{metrics.gridVoltageKv} kV</span>
+            </div>
+            <div>
+              <span className="block text-slate-400">Frequency</span>
+              <span className="font-bold text-cyan-300">{metrics.gridFrequencyHz} Hz</span>
+            </div>
+            <div>
+              <span className="block text-slate-400">Efficiency</span>
+              <span className="font-bold text-emerald-300">{metrics.gridEfficiencyPct}%</span>
+            </div>
+          </div>
+        </div>
+
+        {/* 3. Battery Storage Bank Node */}
+        <div className={`p-3 rounded-xl border text-xs font-mono transition-all ${
+          isBatteryCharging
+            ? 'bg-[#062016] border-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.25)]'
+            : isBatteryDischarging
+            ? 'bg-[#261506] border-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.25)]'
+            : 'bg-[#0b1424] border-slate-700'
+        }`}>
+          <div className="flex items-center justify-between mb-1">
+            <span className="flex items-center gap-1.5 font-bold text-white">
+              <BatteryCharging className={`w-3.5 h-3.5 ${
+                isBatteryCharging ? 'text-emerald-400 animate-bounce' : isBatteryDischarging ? 'text-amber-400' : 'text-slate-400'
+              }`} />
+              BATTERY STORAGE
+            </span>
+            <span className="font-bold text-emerald-400">{battery.availabilityPct}% SoC</span>
+          </div>
+          <div className="flex items-center justify-between text-[11px] pt-1 border-t border-slate-800">
+            <span className={isBatteryCharging ? 'text-emerald-400' : isBatteryDischarging ? 'text-amber-400' : 'text-slate-400'}>
+              {isBatteryCharging ? '⚡ CHARGING FROM GRID' : isBatteryDischarging ? '⚡ DISCHARGING TO GRID' : 'STANDBY BALANCED'}
+            </span>
+            <span className="font-bold text-white">
+              {batteryFlowAbsolute > 0 ? `${batteryFlowAbsolute} MW` : '0 MW'}
+            </span>
+          </div>
+        </div>
+
+        {/* Downward Pulse Indicator */}
+        <div className="flex items-center justify-center -my-1">
+          <div className="flex items-center gap-1 text-[10px] font-mono text-purple-400 bg-purple-950/70 px-2.5 py-0.5 rounded-full border border-purple-800/50 shadow-sm">
+            <span>↓ LOAD DEMAND DISPATCH ↓</span>
+          </div>
+        </div>
+
+        {/* 4. Station Consumption Node */}
+        <div className="p-3.5 rounded-xl bg-gradient-to-b from-[#1b122c] to-[#0c0a1a] border border-purple-400/80 text-center shadow-[0_0_20px_rgba(168,85,247,0.2)]">
+          <div className="flex items-center justify-center gap-1.5 text-purple-300 mb-0.5">
+            <Building2 className="w-3.5 h-3.5" />
+            <span className="font-bold font-['Rajdhani'] text-xs uppercase tracking-wider text-white">RESEARCH STATION DEMAND</span>
+          </div>
+          <div className="text-2xl font-black font-['Rajdhani'] text-purple-200">
+            {metrics.totalConsumptionMw} <span className="text-xs text-purple-400 font-mono">MW</span>
+          </div>
+          <div className="mt-1 text-[10px] text-amber-300 font-mono">
+            Grid Load Index: {metrics.currentGridLoadPct}% of Capacity
+          </div>
+        </div>
+      </div>
+
+      {/* Main Flow Stage Canvas & Interactive Nodes (DESKTOP & TABLET >= md) */}
+      <div className="hidden md:block relative w-full h-[480px] sm:h-[520px] rounded-xl bg-[#070b14]/90 border border-slate-800/80 overflow-hidden">
         {/* Dynamic Canvas for particles */}
         <canvas
           ref={canvasRef}

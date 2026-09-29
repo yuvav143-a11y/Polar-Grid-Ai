@@ -116,31 +116,31 @@ export const AuthModal: React.FC<AuthModalProps> = ({ onSuccess }) => {
   };
 
   return (
-    <div id="polar-grid-auth-portal" className="fixed inset-0 z-40 flex items-center justify-center bg-[#070b14]/90 backdrop-blur-xl p-4 overflow-y-auto">
+    <div id="polar-grid-auth-portal" className="fixed inset-0 z-40 flex items-center justify-center bg-[#070b14]/90 backdrop-blur-xl p-3 sm:p-4 overflow-y-auto">
       {/* Background Ambient Glows */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-600/10 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 w-72 sm:w-96 h-72 sm:h-96 bg-cyan-600/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-72 sm:w-96 h-72 sm:h-96 bg-blue-600/10 rounded-full blur-[100px] pointer-events-none" />
 
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 15 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-        className="relative w-full max-w-md bg-[#0c1322] border border-cyan-500/20 rounded-2xl p-7 shadow-[0_12px_48px_rgba(0,0,0,0.7)] text-slate-100"
+        className="relative w-full max-w-md bg-[#0c1322] border border-cyan-500/20 rounded-2xl p-5 sm:p-7 shadow-[0_12px_48px_rgba(0,0,0,0.7)] text-slate-100 my-auto"
       >
         {/* Header Branding */}
-        <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-600 to-blue-600 flex items-center justify-center shadow-[0_0_16px_rgba(6,182,212,0.4)]">
-              <Zap className="w-5 h-5 text-white" />
+        <div className="flex items-center justify-between mb-5 sm:mb-6 pb-3 sm:pb-4 border-b border-slate-800">
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-cyan-600 to-blue-600 flex items-center justify-center shadow-[0_0_16px_rgba(6,182,212,0.4)] shrink-0">
+              <Zap className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
             </div>
             <div>
-              <h2 className="text-xl font-bold tracking-wider font-['Rajdhani'] text-white">
+              <h2 className="text-lg sm:text-xl font-bold tracking-wider font-['Rajdhani'] text-white">
                 POLAR-GRID <span className="text-cyan-400">AI</span>
               </h2>
-              <p className="text-xs text-slate-400">Secure Grid Control Authentication</p>
+              <p className="text-[11px] sm:text-xs text-slate-400">Secure Grid Control Authentication</p>
             </div>
           </div>
-          <span className="text-[10px] font-mono uppercase bg-cyan-950/80 text-cyan-400 border border-cyan-800/60 px-2 py-0.5 rounded">
+          <span className="text-[9px] sm:text-[10px] font-mono uppercase bg-cyan-950/80 text-cyan-400 border border-cyan-800/60 px-2 py-0.5 rounded">
             PORTAL 3.0
           </span>
         </div>
