@@ -182,10 +182,14 @@ export default function App() {
     setActiveTab('dashboard');
   };
 
+  const handleSplashComplete = useCallback(() => {
+    setShowSplash(false);
+  }, []);
+
   // RENDER FLOW:
   // 1. Splash Screen
   if (showSplash) {
-    return <SplashScreen onComplete={() => setShowSplash(false)} />;
+    return <SplashScreen onComplete={handleSplashComplete} />;
   }
 
   // 2. Authentication Modal (if not logged in)

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Zap, ShieldCheck, Activity } from 'lucide-react';
+import { Zap, Activity } from 'lucide-react';
 
 interface SplashScreenProps {
   onComplete: () => void;
@@ -8,25 +8,28 @@ interface SplashScreenProps {
 
 export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
   const [step, setStep] = useState<number>(0);
+  const onCompleteRef = useRef(onComplete);
+  onCompleteRef.current = onComplete;
 
   useEffect(() => {
     // Step 0: Initial grid & logo appear
     // Step 1: Energy lines animate & surge
     // Step 2: Glowing electricity & Tagline
-    // Step 3: Smooth transition to login
+    // Step 3: Smooth cinematic exit transition to Login screen
     const t1 = setTimeout(() => setStep(1), 700);
-    const t2 = setTimeout(() => setStep(2), 1700);
-    const t3 = setTimeout(() => {
-      setStep(3);
-      setTimeout(onComplete, 600);
-    }, 3100);
+    const t2 = setTimeout(() => setStep(2), 1600);
+    const t3 = setTimeout(() => setStep(3), 2800);
+    const t4 = setTimeout(() => {
+      onCompleteRef.current();
+    }, 3400);
 
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
       clearTimeout(t3);
+      clearTimeout(t4);
     };
-  }, [onComplete]);
+  }, []); // Run strictly once on mount to ensure smooth uninterrupted playback
 
   return (
     <AnimatePresence>
@@ -35,8 +38,8 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
           id="polar-grid-splash-screen"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          exit={{ opacity: 0, scale: 1.04 }}
-          transition={{ duration: 0.6, ease: 'easeInOut' }}
+          exit={{ opacity: 0, scale: 1.05, filter: 'blur(4px)' }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#070b14] overflow-hidden select-none"
         >
           {/* Cybernetic Grid Matrix Background */}
@@ -138,15 +141,6 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
               <span>INITIALIZING SECURE GRID CORE...</span>
             </motion.div>
           </div>
-
-          {/* Quick Skip Control in corner */}
-          <button
-            id="splash-skip-button"
-            onClick={onComplete}
-            className="absolute bottom-6 right-8 text-xs font-mono text-slate-500 hover:text-cyan-400 transition-colors uppercase tracking-wider py-1 px-3 rounded border border-slate-800 hover:border-cyan-800"
-          >
-            Skip Intro [Esc]
-          </button>
         </motion.div>
       )}
     </AnimatePresence>
