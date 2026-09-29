@@ -27,7 +27,18 @@ export const ReportsView: React.FC<ReportsViewProps> = ({ metrics }) => {
   }, []);
 
   const handleExportCsv = () => {
-    window.open(api.getReportExportUrl(), '_blank');
+    const csvContent =
+      "Timestamp,Station,Total_Generation_MW,Total_Consumption_MW,Renewable_Pct,Battery_Charge_Pct,Efficiency_Pct,Grid_Health_Pct\n" +
+      `"${new Date().toISOString()}","Research Station Alpha",${metrics.totalGenerationMw},${metrics.totalConsumptionMw},${metrics.renewableContributionPct},${metrics.batteryChargePct},${metrics.gridEfficiencyPct},${metrics.gridHealthPct}\n`;
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.setAttribute('href', url);
+    link.setAttribute('download', 'polar_grid_telemetry_report.csv');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
   };
 
   return (
