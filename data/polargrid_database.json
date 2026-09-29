@@ -1,0 +1,347 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "RAm",
+      "passwordHash": "$2b$10$PoQIAKxQC1JtyXQqofBFZOFbhD0ge2Lygc2Getv57yhzYU1opKi9.",
+      "selectedStationId": "station-alpha",
+      "role": "GRID_OPERATOR",
+      "account_status": "ACTIVE",
+      "createdAt": "2026-09-23T03:24:35.820Z",
+      "updatedAt": "2026-09-23T03:24:35.820Z"
+    },
+    {
+      "id": 2,
+      "username": "Hack",
+      "passwordHash": "$2b$10$HaaOstWkBCHnr0Qh9SJNsOAPdaSyKyEIuTZwcSOLn8h6aafRUsIGK",
+      "selectedStationId": "station-gamma",
+      "role": "GRID_OPERATOR",
+      "account_status": "ACTIVE",
+      "createdAt": "2026-09-23T03:28:45.475Z",
+      "updatedAt": "2026-09-23T03:28:55.596Z"
+    },
+    {
+      "id": 3,
+      "username": "Hack Nova",
+      "passwordHash": "$2b$10$6lsDuCA31mpU9v3VF4Iii.zkeioBAb6jGadOptkRMXydP772KDQOm",
+      "selectedStationId": "station-alpha",
+      "role": "GRID_OPERATOR",
+      "account_status": "ACTIVE",
+      "createdAt": "2026-09-23T03:52:04.740Z",
+      "updatedAt": "2026-09-23T04:19:52.752Z"
+    },
+    {
+      "id": 4,
+      "username": "TestUser99",
+      "passwordHash": "$2b$10$N8jDMhoEv52KPQsFqsNDYertsasjSt/XefeM305uMjJYbafXZwQ.y",
+      "selectedStationId": "station-alpha",
+      "role": "GRID_OPERATOR",
+      "account_status": "ACTIVE",
+      "createdAt": "2026-09-24T03:36:08.639Z",
+      "updatedAt": "2026-09-24T03:36:08.639Z"
+    }
+  ],
+  "researchStations": [
+    {
+      "id": "station-alpha",
+      "name": "Research Station Alpha",
+      "code": "POLAR-ALPHA-01",
+      "location": "Arctic Polar Ridge, Sector 1",
+      "coordinates": "78°13'N, 15°38'E",
+      "gridCapacityMw": 180,
+      "connectedSources": [
+        "Solar Energy",
+        "Wind Energy",
+        "Battery Storage",
+        "Diesel Generator",
+        "Hydro Energy"
+      ],
+      "status": "ACTIVE",
+      "ambientTempC": -28.5,
+      "windChillC": -41.2
+    },
+    {
+      "id": "station-beta",
+      "name": "Research Station Beta",
+      "code": "POLAR-BETA-02",
+      "location": "Antarctic High Plateau, Sector 4",
+      "coordinates": "82°04'S, 104°22'E",
+      "gridCapacityMw": 160,
+      "connectedSources": [
+        "Wind Energy",
+        "Battery Storage",
+        "Hydro Energy",
+        "Diesel Generator"
+      ],
+      "status": "ACTIVE",
+      "ambientTempC": -34.8,
+      "windChillC": -52
+    },
+    {
+      "id": "station-gamma",
+      "name": "Research Station Gamma",
+      "code": "POLAR-GAMMA-03",
+      "location": "Sub-Zero Continental Base, Sector 2",
+      "coordinates": "71°18'N, 156°46'W",
+      "gridCapacityMw": 210,
+      "connectedSources": [
+        "Solar Energy",
+        "Wind Energy",
+        "Hydro Energy",
+        "Battery Storage"
+      ],
+      "status": "ACTIVE",
+      "ambientTempC": -24.2,
+      "windChillC": -36.5
+    },
+    {
+      "id": "station-delta",
+      "name": "Research Station Delta",
+      "code": "POLAR-DELTA-04",
+      "location": "Glacier Perimeter Station, Sector 7",
+      "coordinates": "69°32'S, 76°11'E",
+      "gridCapacityMw": 140,
+      "connectedSources": [
+        "Hydro Energy",
+        "Wind Energy",
+        "Battery Storage",
+        "Diesel Generator"
+      ],
+      "status": "ACTIVE",
+      "ambientTempC": -19.4,
+      "windChillC": -30
+    }
+  ],
+  "gridNodes": [
+    {
+      "id": "GRID-001",
+      "stationId": "station-alpha",
+      "name": "Main Central Substation",
+      "substationType": "Primary Step-Down & Inverter Hub",
+      "ratedVoltageKv": 230,
+      "maxLoadMw": 60,
+      "currentStatus": "NORMAL",
+      "currentLoadMw": 45.5,
+      "currentVoltageKv": 230,
+      "currentFrequencyHz": 50
+    },
+    {
+      "id": "GRID-002",
+      "stationId": "station-alpha",
+      "name": "North Scientific Array",
+      "substationType": "High-Precision Research Feed",
+      "ratedVoltageKv": 115,
+      "maxLoadMw": 35,
+      "currentStatus": "NORMAL",
+      "currentLoadMw": 26,
+      "currentVoltageKv": 115,
+      "currentFrequencyHz": 50
+    },
+    {
+      "id": "GRID-003",
+      "stationId": "station-alpha",
+      "name": "Cryo-Storage Lab & Life Support",
+      "substationType": "Critical Tier-1 Uninterruptible Feed",
+      "ratedVoltageKv": 115,
+      "maxLoadMw": 40,
+      "currentStatus": "NORMAL",
+      "currentLoadMw": 29.9,
+      "currentVoltageKv": 115,
+      "currentFrequencyHz": 50
+    },
+    {
+      "id": "GRID-004",
+      "stationId": "station-alpha",
+      "name": "Habitation Pods & Hydroponics",
+      "substationType": "Residential & Thermal Support Feed",
+      "ratedVoltageKv": 69,
+      "maxLoadMw": 30,
+      "currentStatus": "NORMAL",
+      "currentLoadMw": 18.2,
+      "currentVoltageKv": 69,
+      "currentFrequencyHz": 50
+    },
+    {
+      "id": "GRID-005",
+      "stationId": "station-alpha",
+      "name": "Perimeter Defense & Radar Beacon",
+      "substationType": "Remote Security & Satellite Uplink Feed",
+      "ratedVoltageKv": 69,
+      "maxLoadMw": 20,
+      "currentStatus": "NORMAL",
+      "currentLoadMw": 10.4,
+      "currentVoltageKv": 69,
+      "currentFrequencyHz": 50
+    }
+  ],
+  "alerts": [
+    {
+      "stationId": "station-alpha",
+      "alertType": "Low Battery Reserve",
+      "severity": "WARNING",
+      "location": "Energy Storage Facility Alpha",
+      "description": "Battery state of charge depleted to 19.7%.",
+      "recommendedAction": "Conserve battery discharge. Divert excess hydro generation to replenish storage reserves.",
+      "status": "ACTIVE",
+      "id": "ALT-4475",
+      "createdAt": "2026-09-23T03:31:06.992Z"
+    },
+    {
+      "stationId": "station-alpha",
+      "alertType": "High Grid Load",
+      "severity": "CRITICAL",
+      "location": "Core Substation Step-Down Bus",
+      "nodeId": "GRID-001",
+      "description": "Total substation demand reached 100% of nominal capacity.",
+      "recommendedAction": "Engage fast-response Battery Storage dispatch and throttle non-critical scientific arrays.",
+      "status": "ACTIVE",
+      "id": "ALT-4964",
+      "createdAt": "2026-09-23T03:26:53.895Z"
+    },
+    {
+      "stationId": "station-alpha",
+      "alertType": "High Grid Load",
+      "severity": "CRITICAL",
+      "location": "Core Substation Step-Down Bus",
+      "nodeId": "GRID-001",
+      "description": "Total substation demand reached 100% of nominal capacity.",
+      "recommendedAction": "Engage fast-response Battery Storage dispatch and throttle non-critical scientific arrays.",
+      "status": "RESOLVED",
+      "id": "ALT-6874",
+      "createdAt": "2026-09-23T03:26:47.295Z",
+      "resolvedAt": "2026-09-23T03:26:52.245Z"
+    },
+    {
+      "stationId": "station-alpha",
+      "alertType": "High Grid Load",
+      "severity": "CRITICAL",
+      "location": "Core Substation Step-Down Bus",
+      "nodeId": "GRID-001",
+      "description": "Total substation demand reached 100% of nominal capacity.",
+      "recommendedAction": "Engage fast-response Battery Storage dispatch and throttle non-critical scientific arrays.",
+      "status": "RESOLVED",
+      "id": "ALT-9425",
+      "createdAt": "2026-09-23T03:25:39.071Z",
+      "resolvedAt": "2026-09-23T03:26:46.389Z"
+    },
+    {
+      "id": "ALT-1082",
+      "stationId": "station-alpha",
+      "alertType": "Voltage Fluctuation",
+      "severity": "WARNING",
+      "location": "North Scientific Array (GRID-002)",
+      "nodeId": "GRID-002",
+      "description": "Minor harmonic voltage dip detected during spectrometer initialization.",
+      "recommendedAction": "Engage secondary static capacitor bank on bus 2B.",
+      "status": "RESOLVED",
+      "createdAt": "2026-09-23T03:05:33.208Z",
+      "resolvedAt": "2026-09-23T03:26:44.951Z"
+    },
+    {
+      "id": "ALT-1081",
+      "stationId": "station-alpha",
+      "alertType": "Renewable Availability Shift",
+      "severity": "NORMAL",
+      "location": "Wind Turbine Field Alpha",
+      "description": "Turbine array 3 wind speed transitioned from 14.2 m/s to 11.8 m/s.",
+      "recommendedAction": "Automated pitch regulation engaged. Hydro output compensation initiated.",
+      "status": "RESOLVED",
+      "createdAt": "2026-09-23T02:38:33.208Z",
+      "resolvedAt": "2026-09-23T03:26:49.030Z"
+    }
+  ],
+  "recommendations": [
+    {
+      "priority": "HIGH",
+      "reason": "Polar daytime solar irradiance is currently peaking at maximum efficiency.",
+      "recommendation": "Increase renewable utilization priority and maximize battery charging rates while irradiance holds.",
+      "affectedSource": "Solar Energy",
+      "id": "REC-300",
+      "stationId": "station-alpha",
+      "createdAt": "2026-09-23T03:46:00.519Z"
+    },
+    {
+      "priority": "HIGH",
+      "reason": "Battery storage reserve is low at under 25% capacity.",
+      "recommendation": "Inhibit non-emergency battery discharge cycles to maintain emergency life-support buffer.",
+      "affectedSource": "Battery Storage",
+      "id": "REC-311",
+      "stationId": "station-alpha",
+      "createdAt": "2026-09-23T03:46:00.519Z"
+    },
+    {
+      "priority": "HIGH",
+      "reason": "Station load is approaching peak threshold (>85%).",
+      "recommendation": "Implement automated demand response in non-essential Cryo-cooling research bays.",
+      "affectedSource": "GRID-003 Substation",
+      "id": "REC-321",
+      "stationId": "station-alpha",
+      "createdAt": "2026-09-23T03:46:00.519Z"
+    }
+  ],
+  "userSettings": {
+    "1": {
+      "userId": 1,
+      "alertNotificationsEnabled": true,
+      "highLoadThresholdPct": 88,
+      "voltageVarianceTolerancePct": 4.5,
+      "theme": "dark",
+      "autoAcknowledgeMinorAlerts": false,
+      "updatedAt": "2026-09-23T03:24:35.821Z"
+    },
+    "2": {
+      "userId": 2,
+      "alertNotificationsEnabled": true,
+      "highLoadThresholdPct": 88,
+      "voltageVarianceTolerancePct": 4.5,
+      "theme": "dark",
+      "autoAcknowledgeMinorAlerts": false,
+      "updatedAt": "2026-09-23T03:28:45.475Z"
+    },
+    "3": {
+      "userId": 3,
+      "alertNotificationsEnabled": true,
+      "highLoadThresholdPct": 88,
+      "voltageVarianceTolerancePct": 4.5,
+      "theme": "dark",
+      "autoAcknowledgeMinorAlerts": false,
+      "updatedAt": "2026-09-23T03:52:04.740Z"
+    },
+    "4": {
+      "userId": 4,
+      "alertNotificationsEnabled": true,
+      "highLoadThresholdPct": 88,
+      "voltageVarianceTolerancePct": 4.5,
+      "theme": "dark",
+      "autoAcknowledgeMinorAlerts": false,
+      "updatedAt": "2026-09-24T03:36:08.639Z"
+    },
+    "5": {
+      "userId": 5,
+      "alertNotificationsEnabled": true,
+      "highLoadThresholdPct": 88,
+      "voltageVarianceTolerancePct": 4.5,
+      "theme": "dark",
+      "autoAcknowledgeMinorAlerts": false,
+      "updatedAt": "2026-09-23T15:16:28.657Z"
+    },
+    "6": {
+      "userId": 6,
+      "alertNotificationsEnabled": true,
+      "highLoadThresholdPct": 88,
+      "voltageVarianceTolerancePct": 4.5,
+      "theme": "dark",
+      "autoAcknowledgeMinorAlerts": false,
+      "updatedAt": "2026-09-23T15:16:59.053Z"
+    },
+    "7": {
+      "userId": 7,
+      "alertNotificationsEnabled": true,
+      "highLoadThresholdPct": 88,
+      "voltageVarianceTolerancePct": 4.5,
+      "theme": "dark",
+      "autoAcknowledgeMinorAlerts": false,
+      "updatedAt": "2026-09-23T03:47:54.068Z"
+    }
+  }
+}

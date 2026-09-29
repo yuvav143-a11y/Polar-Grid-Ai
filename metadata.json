@@ -1,0 +1,6 @@
+{
+  "name": "POLAR-GRID AI",
+  "description": "Intelligent Grid Energy Management & AI Analytics platform featuring real-time grid monitoring, live dynamic energy flow visualization, predictive AI analytics, and automated anomaly detection.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
