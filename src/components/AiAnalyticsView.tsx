@@ -37,14 +37,14 @@ export const AiAnalyticsView: React.FC<AiAnalyticsViewProps> = ({ recentReadings
           </p>
         </div>
 
-        <div className="flex items-center gap-3 font-mono text-xs">
-          <div className="p-2.5 rounded-xl bg-[#070b14] border border-slate-800">
-            <span className="text-slate-400 block text-[10px]">Grid Stability</span>
-            <span className="text-emerald-400 font-bold text-sm">98.6% Stable</span>
+        <div className="grid grid-cols-2 sm:flex items-center gap-2 sm:gap-3 font-mono text-xs">
+          <div className="p-2 sm:p-2.5 rounded-xl bg-[#070b14] border border-slate-800 text-center sm:text-left">
+            <span className="text-slate-400 block text-[9px] sm:text-[10px] truncate">Grid Stability</span>
+            <span className="text-emerald-400 font-bold text-xs sm:text-sm">98.6% Stable</span>
           </div>
-          <div className="p-2.5 rounded-xl bg-[#070b14] border border-slate-800">
-            <span className="text-slate-400 block text-[10px]">CO2 Avoided</span>
-            <span className="text-cyan-400 font-bold text-sm">4.82 Tons/hr</span>
+          <div className="p-2 sm:p-2.5 rounded-xl bg-[#070b14] border border-slate-800 text-center sm:text-left">
+            <span className="text-slate-400 block text-[9px] sm:text-[10px] truncate">CO2 Avoided</span>
+            <span className="text-cyan-400 font-bold text-xs sm:text-sm">4.82 Tons/hr</span>
           </div>
         </div>
       </div>

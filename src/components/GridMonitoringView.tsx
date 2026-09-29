@@ -25,18 +25,18 @@ export const GridMonitoringView: React.FC<GridMonitoringViewProps> = ({ nodes, m
           </p>
         </div>
 
-        <div className="flex items-center gap-3 font-mono text-xs">
-          <div className="p-2.5 rounded-xl bg-[#070b14] border border-slate-800">
-            <span className="text-slate-400 block text-[10px]">Bus Frequency</span>
-            <span className="text-cyan-400 font-bold text-sm">{metrics.gridFrequencyHz} Hz</span>
+        <div className="grid grid-cols-3 sm:flex items-center gap-2 sm:gap-3 font-mono text-xs">
+          <div className="p-2 sm:p-2.5 rounded-xl bg-[#070b14] border border-slate-800 text-center sm:text-left">
+            <span className="text-slate-400 block text-[9px] sm:text-[10px] truncate">Bus Freq</span>
+            <span className="text-cyan-400 font-bold text-xs sm:text-sm">{metrics.gridFrequencyHz} Hz</span>
           </div>
-          <div className="p-2.5 rounded-xl bg-[#070b14] border border-slate-800">
-            <span className="text-slate-400 block text-[10px]">Transmission Line</span>
-            <span className="text-cyan-400 font-bold text-sm">{metrics.gridVoltageKv} kV</span>
+          <div className="p-2 sm:p-2.5 rounded-xl bg-[#070b14] border border-slate-800 text-center sm:text-left">
+            <span className="text-slate-400 block text-[9px] sm:text-[10px] truncate">Line Voltage</span>
+            <span className="text-cyan-400 font-bold text-xs sm:text-sm">{metrics.gridVoltageKv} kV</span>
           </div>
-          <div className="p-2.5 rounded-xl bg-[#070b14] border border-slate-800">
-            <span className="text-slate-400 block text-[10px]">Power Factor</span>
-            <span className="text-emerald-400 font-bold text-sm">{metrics.powerFactor}</span>
+          <div className="p-2 sm:p-2.5 rounded-xl bg-[#070b14] border border-slate-800 text-center sm:text-left">
+            <span className="text-slate-400 block text-[9px] sm:text-[10px] truncate">Power Factor</span>
+            <span className="text-emerald-400 font-bold text-xs sm:text-sm">{metrics.powerFactor}</span>
           </div>
         </div>
       </div>

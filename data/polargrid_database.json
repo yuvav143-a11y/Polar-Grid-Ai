@@ -59,6 +59,16 @@
       "account_status": "ACTIVE",
       "createdAt": "2026-09-29T08:37:10.606Z",
       "updatedAt": "2026-09-29T08:37:10.606Z"
+    },
+    {
+      "id": 7,
+      "username": "MobileOperator",
+      "passwordHash": "$2b$10$NlyCUptfMo15V3Ii6k083uvzRF/HJGqK5Aoj3YJI1Q/tvV8Yu8LGW",
+      "selectedStationId": "station-alpha",
+      "role": "GRID_OPERATOR",
+      "account_status": "ACTIVE",
+      "createdAt": "2026-09-29T08:53:46.326Z",
+      "updatedAt": "2026-09-29T08:53:46.326Z"
     }
   ],
   "researchStations": [
@@ -361,7 +371,7 @@
       "voltageVarianceTolerancePct": 4.5,
       "theme": "dark",
       "autoAcknowledgeMinorAlerts": false,
-      "updatedAt": "2026-09-23T03:47:54.068Z"
+      "updatedAt": "2026-09-29T08:53:46.326Z"
     }
   }
 }
